@@ -11,7 +11,7 @@
     "test": "pnpm -r test",
     "test:unit": "pnpm --filter @omen/core test",
     "test:e2e": "vitest run --config tests/vitest.config.ts",
-    "test:e2e:prod": "OMEN_API_URL=https://api.ce1est.day vitest run --config tests/vitest.config.ts",
+    "test:e2e:prod": "OMEN_API_URL=https://api.ce1este.day vitest run --config tests/vitest.config.ts",
     "test:all": "pnpm test:unit && pnpm test:e2e"
   },
   "devDependencies": {

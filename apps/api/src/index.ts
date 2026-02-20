@@ -8,7 +8,7 @@ const app = new Hono<{ Bindings: Env }>();
 app.use(
 	"*",
 	cors({
-		origin: ["https://omen.ce1est.day", "http://localhost:3000", "https://omen-api.radiantclay.workers.dev"],
+		origin: ["https://omen.ce1este.day", "http://localhost:3000", "https://omen-api.radiantclay.workers.dev"],
 		allowMethods: ["GET", "POST", "OPTIONS"],
 		allowHeaders: ["Content-Type"],
 	}),

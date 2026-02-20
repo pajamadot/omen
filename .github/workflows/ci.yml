@@ -54,4 +54,4 @@ jobs:
       - name: Run E2E tests against production
         run: pnpm test:e2e:prod
         env:
-          OMEN_API_URL: https://api.ce1est.day
+          OMEN_API_URL: https://api.ce1este.day

@@ -10,7 +10,7 @@ import type {
 	CycleOutput,
 } from "@omen/core";
 
-const API_URL = process.env.NEXT_PUBLIC_OMEN_API_URL ?? "https://api.ce1est.day";
+const API_URL = process.env.NEXT_PUBLIC_OMEN_API_URL ?? "https://api.ce1este.day";
 
 async function fetchJson<T>(path: string, init?: RequestInit): Promise<T> {
 	const res = await fetch(`${API_URL}${path}`, {
