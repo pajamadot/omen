@@ -1,0 +1,14 @@
+{
+  "name": "omen-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2024-12-24",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "omen-db",
+      "database_id": "693e4190-e522-47c4-84f2-9836e3e3ce0f"
+    }
+  ],
+  // Uncomment when api.ce1est.day is proxied through Cloudflare:
+  // "routes": [{ "pattern": "api.ce1est.day", "custom_domain": true }]
+}

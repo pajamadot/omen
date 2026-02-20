@@ -1,0 +1,25 @@
+{
+  "name": "omen",
+  "private": true,
+  "scripts": {
+    "dev:web": "pnpm --filter @omen/web dev",
+    "dev:api": "pnpm --filter @omen/api dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "test": "pnpm -r test",
+    "test:unit": "pnpm --filter @omen/core test",
+    "test:e2e": "vitest run --config tests/vitest.config.ts",
+    "test:e2e:prod": "OMEN_API_URL=https://api.ce1est.day vitest run --config tests/vitest.config.ts",
+    "test:all": "pnpm test:unit && pnpm test:e2e"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "vitest": "^3.0.4"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@9.15.4"
+}
