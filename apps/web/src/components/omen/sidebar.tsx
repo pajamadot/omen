@@ -19,7 +19,7 @@ export function Sidebar() {
 	return (
 		<aside className="hidden w-56 shrink-0 border-r border-omen-border bg-omen-surface lg:flex lg:flex-col">
 			<div className="flex h-14 items-center gap-2 border-b border-omen-border px-4">
-				<span className="text-lg font-bold text-omen-amber">◆</span>
+				<span className="text-lg font-bold text-omen-amber omen-logo-glow">◆</span>
 				<span className="text-sm font-bold tracking-widest text-zinc-200">OMEN</span>
 				<span className="ml-auto text-[10px] text-omen-muted">v0.1</span>
 			</div>

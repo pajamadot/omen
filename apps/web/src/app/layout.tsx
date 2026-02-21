@@ -10,6 +10,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en" className="dark">
+			<head>
+				<link
+					href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap"
+					rel="stylesheet"
+				/>
+			</head>
 			<body className="bg-omen-bg text-zinc-100 antialiased">
 				<div className="flex h-screen">
 					<Sidebar />

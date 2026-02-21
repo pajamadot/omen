@@ -72,3 +72,5 @@ export async function seedData() {
 export async function getHealth() {
 	return fetchJson<{ status: string; timestamp: string }>("/api/health");
 }
+
+export const checkHealth = getHealth;

@@ -45,3 +45,21 @@
     box-shadow: 0 0 20px rgba(168, 85, 247, 0.15);
   }
 }
+
+@keyframes pulse-glow {
+  0%, 100% { text-shadow: 0 0 8px rgba(245, 158, 11, 0.4); }
+  50% { text-shadow: 0 0 20px rgba(245, 158, 11, 0.8), 0 0 40px rgba(245, 158, 11, 0.3); }
+}
+
+.omen-logo-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes status-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.status-pulse {
+  animation: status-pulse 2s ease-in-out infinite;
+}

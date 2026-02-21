@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Card } from "@/components/omen/card";
 import { MetricCard } from "@/components/omen/metric-card";
 import { PersonalityRadar } from "@/components/omen/radar-chart";
-import { getPersona, getSignals, getEvents, seedData, triggerEvolve } from "@/lib/api";
+import { getPersona, getSignals, getEvents, seedData, triggerEvolve, checkHealth } from "@/lib/api";
 import { formatTimestamp, severityColor } from "@/lib/utils";
 import type { PersonalityState, EvolutionState, Signal, EvolutionEvent } from "@omen/core";
 
@@ -15,9 +15,12 @@ export default function Dashboard() {
 	const [events, setEvents] = useState<EvolutionEvent[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [actionMsg, setActionMsg] = useState("");
+	const [apiStatus, setApiStatus] = useState<"connected" | "disconnected" | "checking">("checking");
 
 	async function load() {
 		try {
+			const health = await checkHealth();
+			setApiStatus(health.status === "ok" ? "connected" : "disconnected");
 			const [p, s, e] = await Promise.all([
 				getPersona(),
 				getSignals(5),
@@ -28,7 +31,7 @@ export default function Dashboard() {
 			setSignals(s.data);
 			setEvents(e.data);
 		} catch {
-			// API may not be available yet
+			setApiStatus("disconnected");
 		} finally {
 			setLoading(false);
 		}
@@ -62,7 +65,21 @@ export default function Dashboard() {
 		<div className="space-y-6">
 			<div className="flex items-center justify-between">
 				<div>
-					<h1 className="text-xl font-bold tracking-tight">OMEN Dashboard</h1>
+					<div className="flex items-center gap-3">
+						<h1 className="text-xl font-bold tracking-tight">OMEN Dashboard</h1>
+						<span className="flex items-center gap-1.5 rounded-full border border-omen-border px-2 py-0.5">
+							<span className={`inline-block h-1.5 w-1.5 rounded-full ${
+								apiStatus === "connected" ? "bg-omen-emerald status-pulse" :
+								apiStatus === "checking" ? "bg-omen-amber status-pulse" :
+								"bg-omen-red"
+							}`} />
+							<span className="text-[10px] text-omen-muted">
+								{apiStatus === "connected" ? "API Connected" :
+								 apiStatus === "checking" ? "Checking..." :
+								 "API Offline"}
+							</span>
+						</span>
+					</div>
 					<p className="text-xs text-omen-muted">Protocol-constrained self-evolving agent</p>
 				</div>
 				<div className="flex items-center gap-2">
